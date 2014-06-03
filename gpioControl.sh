@@ -37,7 +37,7 @@ if (( pump != 666 )); then
   
   echo "pump is running..."
   
-  for pc in $(seq 0  180); do
+  for pc in $(seq 0  MAX_TIME_SEC); do
     remainedTime=$(( setTime - pc ))
     echo -ne "remained Time: $remainedTime   \\r"
     sleep 1
