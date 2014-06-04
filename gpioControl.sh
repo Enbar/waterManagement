@@ -39,11 +39,11 @@ if [ "$pump" != "666" ]; then
   echo $pump > /sys/class/gpio/export
   echo "out" > /sys/class/gpio/gpio$pump/direction
   echo $START > /sys/class/gpio/gpio$pump/value  
-  echo "pump is running..."
+  echo "Pump is running..."
 
   for pc in $(seq 0  $MAX_TIME_SEC); do
     remainedTime=$(( setTime - pc ))
-    echo -ne "remained Time: $remainedTime\\r"
+    echo -ne "Will be stopped in $remainedTime sec   \\r"
     sleep 1
 
   if [ "$remainedTime" -eq 1 ]; then 
@@ -53,7 +53,7 @@ if [ "$pump" != "666" ]; then
 
   echo $STOP > /sys/class/gpio/gpio$pump/value
   echo $pump > /sys/class/gpio/unexport
-
+  echo
   echo "Pump is stopped!"
 fi
 
